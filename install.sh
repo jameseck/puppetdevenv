@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GITDIR=~/gittmp2
+GITDIR=~/gittmp
 PUPPETGITDIR=$GITDIR/puppet
 
 sudo yum install -y vim-enhanced mysql-devel ruby
@@ -33,7 +33,8 @@ function preprepo ()
 {
   repourl=$1
   repopath=$2
-
+  echo
+  echo "Cloning repo $url"
   rm -rf $repopath
   git clone $repourl $repopath
   rm -rf $repopath/.git/hooks

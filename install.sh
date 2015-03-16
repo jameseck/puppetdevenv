@@ -26,7 +26,7 @@ rvm use 2.1 && gem install bundler && bundle install -j4 --gemfile=~/Gemfile
 echo "--no-autoloader_layout-check
 --no-80chars-check
 --no-documentation-check
---no-quoted_booleans-check" > /home/james/.puppet-lint.rc
+--no-quoted_booleans-check" > ~/.puppet-lint.rc
 
 
 function preprepo ()

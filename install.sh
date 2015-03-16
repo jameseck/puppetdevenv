@@ -9,10 +9,13 @@ cp Gemfile ~/
 mkdir ~/.vim
 cp vim/update_bundles ~/.vim/
 
+bash -c "cd ~/.vim && ./update_bundles"
+
+cp git-prompt.sh ~/.git-prompt.sh
 
 # install rvm
 if ! which rvm ; then
-  curl -sSL https://get.rvm.io | bash
+  curl -sSL https://get.rvm.io | bash -s stable --auto-dotfiles
   rvm install 2.1
 else
   echo "RVM already installed."
@@ -47,7 +50,13 @@ mkdir -p $GITDIR
 mkdir -p $PUPPETGITDIR
 mkdir -p $PUPPETGITDIR/modules
 
-preprepo git@github.com:jameseck/puppet_repository $PUPPETGITDIR/puppet_repository
-preprepo git@github.com:jameseck/puppet-roles $PUPPETGITDIR/modules/roles
-preprepo git@github.com:jameseck/puppet-profiles $PUPPETGITDIR/modules/profiles
+#preprepo git@github.com:jameseck/puppet_repository $PUPPETGITDIR/puppet_repository
+#preprepo git@github.com:jameseck/puppet-roles $PUPPETGITDIR/modules/roles
+#preprepo git@github.com:jameseck/puppet-profiles $PUPPETGITDIR/modules/profiles
 
+echo
+echo "Add the following manually to .bashrc or similar:"
+echo
+echo source ~/.git-prompt.sh
+echo export PS1="\[\033[01;34m\]\[\033[01;32m\]\u@\h\[\033[00m\]:\$([ -f ~/.rvm/bin/rvm-prompt ] && ~/.rvm/bin/rvm-prompt) \[\033[01;32m\]\w\[\033[00;33m\]\$(type __git_ps1 2>/dev/null| head -1 | grep -q '__git_ps1 is a function' &&__git_ps1 \" (%s)\") \[\033[01;36m\]\$\[\033[00m\] "
+echo

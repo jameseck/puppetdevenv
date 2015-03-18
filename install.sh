@@ -21,6 +21,10 @@ else
   echo "RVM already installed."
 fi
 
+if ! grep rvm\/scripts\/rvm ~/.bashrc >/dev/null 2>&1; then
+  echo "[[ -s \"$HOME/.rvm/scripts/rvm\" ]] && source \"$HOME/.rvm/scripts/rvm\" # Load RVM into a shell session *as a function*" >> ~/.bashrc
+fi
+
 source ~/.profile
 source ~/.rvm/scripts/rvm
 
